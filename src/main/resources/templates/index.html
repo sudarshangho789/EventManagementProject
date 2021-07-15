@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Person List</h1>
+    <a href="/new">Create New Person</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Person ID</th>
+                <th>age</th>
+                <th>firstName</th>
+                <th>lastName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="person : ${listPersons}">
+                <td th:text="${person.personId}">Person ID</td>
+                <td th:text="${person.age}">Age</td>
+                <td th:text="${person.firstName}">First Name</td>
+                <td th:text="${person.lastName}">Last Name</td>
+                <td>
+                  <!--   <a th:href="@edit/"+"${person.personId}">Edit</a> -->
+                   <a th:href="@{'/edit/' + ${person.personId}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${person.personId}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
